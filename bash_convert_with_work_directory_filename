@@ -1,0 +1,1 @@
+current_directory=$(basename "$PWD"); for f in *.png; do echo "$f"; python3 -c "from PIL import Image; Image.open('$f').save('${current_directory}_${f%.png}.pdf', 'pdf', save_all=True, optimize=True, background=0)"; done; pdftk "${current_directory}"_*.pdf cat output "${current_directory}.pdf"
